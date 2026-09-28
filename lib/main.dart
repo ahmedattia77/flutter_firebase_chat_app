@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'chatapp Demo',
       theme: ThemeData(
         fontFamily: 'DM',
-        colorScheme: .fromSeed(seedColor: Colors.orangeAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
       ),
       initialRoute: '/',
       onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),

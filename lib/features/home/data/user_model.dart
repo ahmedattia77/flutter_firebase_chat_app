@@ -3,12 +3,16 @@ class UserModel {
   final String displayName;
   final String email;
   final String photoUrl;
+  final String status;
+  final int lastSeen;
 
   const UserModel({
     required this.uid,
     required this.displayName,
     required this.email,
     required this.photoUrl,
+    this.status = 'Offline',
+    this.lastSeen = 0,
   });
 
   factory UserModel.fromFirestore(
@@ -17,9 +21,11 @@ class UserModel {
   ) {
     return UserModel(
       uid: documentId,
-      displayName: json['displayName'] ?? json['name'] ?? 'No Name',
+      displayName: json['name'] ?? json['displayName'] ?? 'new user',
       email: json['email'] ?? '',
       photoUrl: json['photoUrl'] ?? json['photoURL'] ?? '',
+      status: json['status'] ?? 'Offline',
+      lastSeen: json['last_seen'] ?? 0,
     );
   }
 
